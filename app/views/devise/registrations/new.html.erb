@@ -1,0 +1,85 @@
+<div class="service-container">
+  <div class="service-label fixed-top"></div>
+
+  <div class="row" style="margin: 0 !important;">
+    <div class="col-sm-6 col-sm-offset-3 form-container">
+      <h1>Sign up</h1>
+
+      <div class="row">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+          <div class="form-group">
+            <%= f.label "Ime" %><br />
+            <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Prezime" %><br />
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Datum rodjenja" %><br />
+            <div class="input-group date" data-provide="datepicker" data-date-format="dd.mm.yyyy">
+              <%= f.text_field :birth_date, class: 'form-control' %>
+              <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Krvna grupa" %><br />
+            <%= f.select :blood_type, options_for_select([
+                  ["0", User::BLOOD_TYPE_Z], ["A", User::BLOOD_TYPE_A],
+                  ["B", User::BLOOD_TYPE_B], ["AB", User::BLOOD_TYPE_AB]]),
+                  {}, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.check_box :rh %>
+            <%= f.label :rh %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Adresa" %><br />
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Broj telefona" %><br />
+            <%= f.text_field :phone_num, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "LBO" %><br />
+            <%= f.text_field :lbo, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Email" %><br />
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Password" %>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Potvrda passworda" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Registruj se", class: 'btn btn-default pull-right submit-btn' %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+
+  <div class="service-label fixed-bottom"></div>
+</div>

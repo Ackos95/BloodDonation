@@ -1,0 +1,22 @@
+<%= render partial: "shared/navigation", locals: { uri: :profile } %>
+
+<div class="service-container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 main-container">
+      <hr class="service-header-line">
+      <div class="clearfix"></div>
+      <div class="service-heading">
+        <h2 class="heading-wrapper"><%= @user.full_name %></h2>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <%= render "profile_show" %>
+        </div>
+      </div>
+      <%#= render "profile_edit" %>
+
+      <div class="service-label fixed-bottom"></div>
+    </div>
+  </div>
+</div>

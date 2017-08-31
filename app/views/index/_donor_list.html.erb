@@ -1,0 +1,29 @@
+<section role="main">
+
+  <div class="content-section-a">
+    <div class="container">
+      <div class="row">
+        <div class="search-results">
+          <div class="list-group">
+            <% if @donors.length > 0 %>
+              <% @donors.each do |donor| %>
+                <a <%= current_user ? "href=#{user_profile_path(donor)}" : '' %> class="list-group-item <%= 'no-hover' unless current_user %>">
+                  <div>
+                    <h4 class="list-group-item-heading"><%= donor.full_name %><span class="pull-right"><%= donor.donation_number %></span></h4>
+                    <p class="list-group-item-text"><%= donor.blood_type_full %> &nbsp;<small><%= donor.birth_date %></small></p>
+                  </div>
+                </a>
+              <% end %>
+            <% else %>
+              <a class="list-group-item no-hover">Nema rezultata</a>
+              <script>
+                $.notify({ message: 'Nema rezultata za date parametre' }, { type: 'info' });
+              </script>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

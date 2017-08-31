@@ -1,0 +1,31 @@
+<div id="profile-edit">
+
+  <div class="row">
+    <%= form_tag user_profile_update_path(@user.id), method: :put do %>
+      <div class="form-group">
+        <%= label_tag "Ime" %><br />
+        <%= text_field_tag "user[first_name]", @user.first_name, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "Prezime" %><br />
+        <%= text_field_tag "user[last_name]", @user.first_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "Adresa" %><br />
+        <%= text_field_tag "user[address]", @user.address, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "Broj telefona" %><br />
+        <%= text_field_tag "user[phone_num]", @user.phone_num, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= button_tag "Sačuvaj izmene", type: :submit, class: "btn btn-default pull-right" %>
+        <%= link_to "Odustani", user_profile_path(@user), class: "btn btn-default pull-right" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<%= render partial: "shared/navigation", locals: { uri: :contact } %>
+
+<%= render partial: 'header_small', locals: { heading: 'Kontakt' } %>
+
+<%= render 'contact_content' %>
+
+<%= render 'banner' %>
+<%= render 'footer' %>
+
+<!-- Google map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= Settings.googleMaps.apiKey %>&callback=initMap"
+    async defer></script>

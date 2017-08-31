@@ -1,0 +1,39 @@
+<div class="service-container">
+  <div class="service-label fixed-top"></div>
+
+  <div class="row" style="margin: 0 !important;">
+    <div class="col-sm-6 col-sm-offset-3 form-container">
+      <h1> Log in </h1>
+
+      <div class="row">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label "Email" %><br />
+            <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          </div>
+
+          <div class="form-group"">
+            <%= f.label "Password" %><br />
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-group"">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="form-group"">
+            <%= f.submit "Log in", class: 'btn btn-default pull-right submit-btn' %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+  
+  <div class="service-label fixed-bottom"></div>
+</div>
+

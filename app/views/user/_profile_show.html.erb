@@ -1,0 +1,70 @@
+<div id="profile-show">
+  <div class="panel panel-default panel-service">
+    <div class="panel-heading">
+      <h3 class="panel-title">Ime</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.full_name %>
+    </div>
+  </div>
+  <% if policy(@user).edit? %>
+    <div class="panel panel-default panel-service">
+      <div class="panel-heading">
+        <h3 class="panel-title">Email</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.email %>
+      </div>
+    </div>
+    <div class="panel panel-default panel-service">
+      <div class="panel-heading">
+        <h3 class="panel-title">Datum rodjenja</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.birth_date %>
+      </div>
+    </div>
+    <div class="panel panel-default panel-service">
+      <div class="panel-heading">
+        <h3 class="panel-title">Adresa</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.address %>
+      </div>
+    </div>
+    <div class="panel panel-default panel-service">
+      <div class="panel-heading">
+        <h3 class="panel-title">Broj telefona</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.phone_num %>
+      </div>
+    </div>
+    <div class="panel panel-default panel-service">
+      <div class="panel-heading">
+        <h3 class="panel-title">LBO</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.lbo %>
+      </div>
+    </div>
+  <% end %>
+  <div class="panel panel-default panel-service">
+    <div class="panel-heading">
+      <h3 class="panel-title">Krvna grupa</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.blood_type %>
+    </div>
+  </div>
+  <% if policy(@user).edit? %>
+    <div class="row">
+      <%= link_to "Izmeni podatke", user_profile_edit_path(@user) %>
+    </div>
+  <% end %>
+  <% if policy(@user).user_donations? %>
+    <div class="row">
+      <%= link_to "Pregledaj donacije", user_donations_path(@user) %>
+    </div>
+  <% end %>
+</div>

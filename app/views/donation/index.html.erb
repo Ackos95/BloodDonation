@@ -1,0 +1,33 @@
+<%= render partial: "shared/navigation", locals: { uri: :donations } %>
+
+<div class="service-container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 main-container">
+      <hr class="service-header-line">
+      <div class="clearfix"></div>
+      <div class="service-heading">
+        <h2 class="heading-wrapper">Sve donacije</h2>
+      </div>
+
+      <div class="search-results">
+        <div class="list-group">
+          <% if @donations.length > 0 %>
+            <% @donations.each do |donation| %>
+              <a class="list-group-item no-hover">
+                <div>
+                  <h4 class="list-group-item-heading"><%= donation.date_to_human %> <%= donation.blood_type_full %><span class="pull-right"><%= donation.status %></span></h4>
+                </div>
+              </a>
+            <% end %>
+          <% else %>
+            <a class="list-group-item no-hover">Nema donacija u bazi</a>
+          <% end %>
+        </div>
+      </div>
+
+      <%= link_to "Razresi donacije u obradi", donations_for_check_path, class: "pull-right" %>
+
+      <div class="service-label fixed-bottom"></div>
+    </div>
+  </div>
+</div>

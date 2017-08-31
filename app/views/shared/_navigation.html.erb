@@ -1,0 +1,74 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+  <div class="container topnav">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand topnav" href="<%= root_path %>">
+        <%= image_tag "blood_drop.png", class: "brand-image" %> &nbsp;
+        <p style="display: inline-block;">Dobrovoljno davanje krvi</p>
+      </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li class="nav-item <%= 'current' if uri == :profile %>">
+            <a href="<%= my_profile_path %>">Profil</a>
+          </li>
+        <% else %>
+          <li class="nav-item <%= 'current' if uri == :index %>">
+            <a href="<%= root_path %>">Početna</a>
+          </li>
+        <% end %>
+
+        <li class="nav-item <%= 'current' if uri == :donor_db %>">
+          <a href="<%= donor_database_path %>">Baza donora</a>
+        </li>
+
+        <% if current_user %>
+          <% if policy(current_user).user_donations? %>
+            <li class="nav-item <%= 'current' if uri == :donation_history %>">
+              <a href="<%= donation_history_path %>">Istorija donacija</a>
+            </li>
+          <% else %>
+            <li class="nav-item <%= 'current' if uri == :donations %>">
+              <a href="<%= all_donations_path %>">Sve donacije</a>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="nav-item <%= 'current' if uri == :contact %>">
+            <a href="<%= contact_path %>">Kontakt</a>
+          </li>
+        <% end %>
+        <% if current_user %>
+          <li class="dropdown nav-item">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.decorate.full_name %>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="nav-item <%= 'current' if uri == :edit_profile %>">
+                <%= link_to "Izmena profila", profile_edit_path %>
+              </li>
+              <% if policy(:donation).for_check? %>
+                <li class="nav-item <%= 'current' if uri == :check_donations %>">
+                  <%= link_to "Neobradjeni zahtevi", donations_for_check_path %>
+                </li>
+              <% end %>
+              <li class="divider"></li>
+              <li class="nav-item">
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>

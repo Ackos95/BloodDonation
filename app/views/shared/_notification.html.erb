@@ -1,0 +1,12 @@
+<script>
+  <% flash.each do |key, value| %>
+    <% unless value.blank? %>
+      $.notify({
+        message: '<%= value %>' 
+      },{
+        type: '<%= key.to_sym == :error or key.to_sym == :alert ? 'danger' : 'success' %>'
+      });
+    <% end %>
+  <% end %>
+  <% flash[:error] = flash[:errors] = flash[:notice] = flash[:alert] = nil %>
+</script>

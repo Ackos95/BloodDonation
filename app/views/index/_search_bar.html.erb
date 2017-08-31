@@ -1,0 +1,67 @@
+<section role="search">
+  <div class="content-section-b">
+    <div class="container">
+      <div class="row">
+        <%= form_tag search_path, remote: true, method: :get do %>
+        <div class="input-group" id="simple-search">
+          <%= text_field_tag 'search[name]', nil, class: 'form-control', placeholder: 'Pretraga' %>
+          <div class="input-group-btn">
+            <div class="btn-group" role="group">
+              <div class="dropdown dropdown-lg">
+                <%= button_tag type: "button", id: "show-advanced-search", class: "btn btn-default dropdown-toggle" do %>
+                <span class="glyphicon glyphicon-cog"></span>
+                <% end %>
+              </div>
+              <%= button_tag type: "submit", class: "btn btn-primary", data: { "disable-with": icon('spinner', class: 'fa-spin') } do %>
+              <span class="glyphicon glyphicon-search"></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="input-group hidden" id="adv-search">
+          <%= form_tag search_path, remote: true, method: :get, class: "form-horizontal" do %>
+            <%= hidden_field_tag "search[complex]", true %>
+            <div class="form-group">
+              <label for="filter">Krvna grupa</label>
+              <%= select_tag "search[blood_type]", options_for_select([
+                ["0", User::BLOOD_TYPE_Z], ["A", User::BLOOD_TYPE_A],
+                ["B", User::BLOOD_TYPE_B], ["AB", User::BLOOD_TYPE_AB]]),
+                include_blank: "Sve krvne grupe", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="filter">Rh faktor</label>
+              <%= select_tag "search[rh]", options_for_select([["+", true], ["-", false]]), include_blank: "Svi", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="age_start">Godine od</label>
+              <div class="input-group date" data-provide="datepicker" data-date-format="dd.mm.yyyy">
+                <%= text_field_tag 'search[age_start]', nil, class: 'form-control' %>
+                <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="age_start">Godine do</label>
+              <div class="input-group date" data-provide="datepicker" data-date-format="dd.mm.yyyy">
+                <%= text_field_tag 'search[age_end]', nil, class: 'form-control' %>
+                <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+            </div>
+            <%= button_tag type: "submit", class: "btn btn-primary adv-search pull-right", data: { "disable-with": icon('spinner', class: 'fa-spin') } do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+            <%= button_tag type: "button", id: "hide-advanced-search", class: "btn btn-default dropdown-toggle pull-right" do %>
+              <span class="glyphicon glyphicon-chevron-up"></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

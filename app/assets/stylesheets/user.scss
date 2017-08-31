@@ -1,0 +1,55 @@
+.service-container {
+
+  .main-container {
+    padding: 100px 40px;
+    background-color: #f8f8f8;
+    min-height: 100%;
+    position: relative;
+    margin-bottom: 10px;
+
+    .submit-btn {
+      margin-right: 25px;
+    }
+
+    .service-label {
+      margin-left: -40px;
+      height: 15px;
+    }
+  }
+}
+
+.service-header-line {
+  width: 95%;
+  border-top: 3px solid #e7e7e7;
+}
+
+.service-heading {
+  display: flex;
+  justify-content: center;
+  color: white !important;
+
+  .heading-wrapper {
+    padding: 5px 60px;
+    background-color: rgba(128, 4, 6, 0.6);
+    margin-bottom: 65px;
+    border-radius: 34px;
+
+    small {
+      color: white;
+    }
+  }
+}
+
+.panel-service {
+  .panel-heading {
+    background-color: rgba(128, 4, 6, 0.2);
+  }
+}
+
+.new-schedule {
+  border: 2px solid #800406;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 8px;
+}

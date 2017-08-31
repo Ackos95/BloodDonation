@@ -1,0 +1,37 @@
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="list-inline">
+          <li>
+            <a href="<%= root_path %>">Početna</a>
+          </li>
+          <li class="footer-menu-divider">&sdot;</li>
+          <li>
+            <a href="<%= donor_database_path %>">Baza donora</a>
+          </li>
+          <li class="footer-menu-divider">&sdot;</li>
+          <li>
+            <a href="<%= contact_path %>">Kontakt</a>
+          </li>
+          <% if current_user %>
+            <li class="footer-menu-divider">&sdot;</li>
+            <li>
+              <a href="<%= user_profile_path(current_user) %>">Profil</a>
+            </li>
+            <li class="footer-menu-divider">&sdot;</li>
+            <li>
+              <% if policy(current_user).donor_and_myself? %>
+                <a href="<%= donation_history_path %>">Istorija donacija</a>
+              <% else %>
+                <a href="<%= all_donations_path %>">Sve donacije</a>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <p class="copyright text-muted small">Copyright &copy; Milica Bibić 2017. All Rights Reserved</p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+<%= render partial: "shared/navigation", locals: { uri: :donor_db } %>
+
+<%= render partial: 'header_small', locals: { heading: 'Baza dobrovoljnih davaoca krvi' } %>
+
+<%= render 'search_bar' %>
+
+<div id="donor-search-res">
+  <%= render partial: 'donor_list', donors: @donors %>
+</div>
+
+<%= render 'banner' %>
+<%= render 'footer' %>
