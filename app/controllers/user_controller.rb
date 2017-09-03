@@ -7,6 +7,10 @@ class UserController < ApplicationController
   def show
   end
 
+  def pdf_certificate
+    render pdf: 'donor_pdf', layout: 'pdf'
+  end
+
   # show edit user profile page (not all information)
   def edit
   end

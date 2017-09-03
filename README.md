@@ -28,13 +28,26 @@ TODO
 
 ### Project setup
 
+#### Install `wkpdftohtml` (Windows)
+
+In order for pdf certificate (for donors) you have to install `wkpdftohtml` ([download link](https://wkhtmltopdf.org/downloads.html)) into `C://wkhtmltopdf`. If you change location, you have to chnage `config/initializers/wicked_pdf.rb` file (`exe_path` variable)
+
+#### Configuraiton setup
+
 Go to `/config/settings.yml`, and change value to your Google Developer API key [link](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
 Next go to `/config/database.yml` and change `username` and `password` field to match your mysql user (you can use root user in development)
+
+#### Install required libraries and create database
 
 Navigate to project base folder in terminal (cmd on windows) and execute
 ```bash
 bundle install --path vendor/bundle
 bundle exec rake db:create db:migrate db:seed
+```
+
+### Start application
+
+```bash
 bundle exec rails s
 ```

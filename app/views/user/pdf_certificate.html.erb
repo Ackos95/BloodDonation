@@ -1,0 +1,17 @@
+<div class="main-container">
+  <hr class="line" />
+  <div class="heading">
+    <h1>Potvrda</h1>
+  </div>
+
+  <div class="body">
+    <p>
+      Ovim se potvrdjuje da je <strong><%= @user.full_name %></strong> dobrovoljni davalac krvi, zvanično registrovan na <span class="italic">"BloodDonation"</span> servisu od <%= @user.registered_since  %>
+    </p>
+    <p>
+      Do današnjeg dana (<%= DateTime.now.strftime("%d. %m. %Y.") %>) ima potvrdjenih <strong><%= @user.donation_number %></strong>.
+    </p>
+  </div>
+
+  <div class="bottom-line"></div>
+</div>

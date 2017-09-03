@@ -9,6 +9,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def pdf_certificate?
+    user.donor? and myself?
+  end
+
   def edit?
     update?
   end

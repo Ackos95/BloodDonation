@@ -34,6 +34,10 @@ class UserDecorator < ApplicationDecorator
     "Datum rodjenja: #{birth_date}"
   end
 
+  def registered_since
+    object.created_at.strftime("%d. %m. %Y.")
+  end
+
   private
 
   def stringify_blood_type(obj)

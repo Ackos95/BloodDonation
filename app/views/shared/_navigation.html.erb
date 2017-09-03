@@ -54,7 +54,12 @@
               <li class="nav-item <%= 'current' if uri == :edit_profile %>">
                 <%= link_to "Izmena profila", profile_edit_path %>
               </li>
-              <% if policy(:donation).for_check? %>
+                <% if @user.donor? %>
+                  <li class="nav-item">
+                    <%= link_to "Generiši potvrdu", pdf_cert_path, target: "_blank" %>
+                  </li>
+                <% end %>
+                <% if policy(:donation).for_check? %>
                 <li class="nav-item <%= 'current' if uri == :check_donations %>">
                   <%= link_to "Neobradjeni zahtevi", donations_for_check_path %>
                 </li>

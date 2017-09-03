@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get '/profile', to: 'user#show', as: 'my_profile'
     get '/profile/edit', to: 'user#edit', as: 'profile_edit'
 
+    get '/certificate', to: 'user#pdf_certificate', as: 'pdf_cert'
+
     # admin only can see all donations
     get '/donations/all', to: 'donation#index', as: 'all_donations'
     get '/donations/for_check', to: 'donation#for_check', as: 'donations_for_check'
