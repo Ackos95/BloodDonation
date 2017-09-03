@@ -18,7 +18,7 @@ class DonationDecorator < ApplicationDecorator
     { 
       Donation::STATUS_FINISHED => "Uspešno izvršeno",
       Donation::STATUS_FAILED => "Promašen termin",
-      Donation::STATUS_PENDING => "U obradi"
+      Donation::STATUS_PENDING => (object.timestamp < DateTime.now ? "U obradi" : "Zakazan termin")
     }[object.status]
   end
 

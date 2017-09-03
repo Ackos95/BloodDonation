@@ -14,7 +14,7 @@ class DonationController < ApplicationController
 
   def for_check
     authorize :donation
-    @donations = Donation.for_check.decorate
+    @donations = Donation.before_now.for_check.decorate
   end
 
   # see donations for specific user (DONOR, ADMIN)
@@ -31,8 +31,8 @@ class DonationController < ApplicationController
       flash[:notice] = "Uspešno ste zakazali termin #{donation.decorate.date_to_human}"
       redirect_to my_profile_path
     else
-      flash[:error] = "Termin je zauzet, pokušajte ponovo"
-      redirect_to schedule_create_path
+      flash[:error] = donation.errors[:timestamp].length ? donation.errors[:timestamp][0] : "Nepoznata greska, pokusajte kasnije."
+      redirect_back(fallback_location: my_profile_path)
     end
   end
 

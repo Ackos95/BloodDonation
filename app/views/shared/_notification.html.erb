@@ -4,7 +4,7 @@
       $.notify({
         message: '<%= value %>' 
       },{
-        type: '<%= key.to_sym == :error or key.to_sym == :alert ? 'danger' : 'success' %>'
+        type: '<%= (key.to_sym == :error or key.to_sym == :alert) ? "danger" : "success" %>'
       });
     <% end %>
   <% end %>
