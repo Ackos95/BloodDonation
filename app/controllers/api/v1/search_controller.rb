@@ -7,7 +7,7 @@ class Api::V1::SearchController < ApplicationController
   private
 
   def search_params
-    @params = params.require(:search).permit(:name, :blood_type, :rh, :age_start, :age_end, :complex)
+    @params = params.require(:search).permit(:name, :blood_type, :rh, :age_start, :age_end, :complex, :rang)
   end
 
 end

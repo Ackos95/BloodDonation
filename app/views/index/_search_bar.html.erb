@@ -53,6 +53,16 @@
                 </div>
               </div>
             </div>
+            <div class="form-group">
+              <label for="rang">Rangiraj po</label>
+              <%= select_tag "search[rang]", options_for_select([
+                  ["Broju donacija", User::DONATION_NUMBER_SORT],
+                  ["Godinama (Stariji prvo)", User::AGE_SORT_OF],
+                  ["Godinama (Mladji prvo)", User::AGE_SORT_JF],
+                  ["Datumu registracije (Stariji prvo)", User::REGISTRATION_DATE_SORT_OF],
+                  ["Datumu registracije (Mladji prvo)", User::REGISTRATION_DATE_SORT_NF]
+                ]), include_blank: "Bez kriterijuma", class: "form-control" %>
+            </div>
             <%= button_tag type: "submit", class: "btn btn-primary adv-search pull-right", data: { "disable-with": icon('spinner', class: 'fa-spin') } do %>
               <span class="glyphicon glyphicon-search"></span>
             <% end %>

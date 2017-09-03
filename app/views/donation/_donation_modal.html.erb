@@ -1,0 +1,19 @@
+<div id="donation-modal-<%= donation.id %>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Obrada donacije</h4>
+      </div>
+      <div class="modal-body">
+        <p><%= donation.date_to_human %> <%= donation.user_name %></p>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Prihvati", check_donation_path(donation.id, shown: true), class: "btn btn-default", method: :post%>
+        <%= link_to "Odbij", check_donation_path(donation.id, shown: false), class: "btn btn-danger", method: :post %>
+      </div>
+    </div>
+  </div>
+</div>

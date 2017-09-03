@@ -57,12 +57,20 @@
       <%= @user.blood_type %>
     </div>
   </div>
+  <div class="panel panel-default panel-service">
+    <div class="panel-heading">
+      <h3 class="panel-title">Član od</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.registered_since %>
+    </div>
+  </div>
   <% if policy(@user).edit? %>
     <div class="row">
       <%= link_to "Izmeni podatke", user_profile_edit_path(@user) %>
     </div>
   <% end %>
-  <% if policy(@user).user_donations? and not @user.donor? %>
+  <% if policy(@user).user_donations? %>
     <div class="row">
       <%= link_to "Pregledaj donacije", user_donations_path(@user) %>
     </div>

@@ -8,8 +8,8 @@ class Donation < ApplicationRecord
 
   scope :ordered, -> { order(timestamp: :desc) }
   scope :older_first, -> { order(timestamp: :asc) }
-  scope :finished, -> { where(checked: :true).where(shown: true) }
-  scope :failed, -> { where(checked: :true).where(shown: false) }
+  scope :finished, -> { where(checked: true).where(shown: true) }
+  scope :failed, -> { where(checked: true).where(shown: false) }
   scope :pending, -> { where(checked: false) }
   scope :for_check, -> { pending.older_first }
 

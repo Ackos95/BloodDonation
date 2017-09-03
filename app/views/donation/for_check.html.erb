@@ -13,21 +13,14 @@
         <div class="list-group">
           <% if @donations.length > 0 %>
             <% @donations.each do |donation| %>
-              <a class="list-group-item no-hover">
-                <div>
-                  <h4 class="list-group-item-heading">
-                    <%= donation.date_to_human %> <%= donation.user_name %>
-                    <span class="pull-right">
-                      <%= link_to check_donation_path(donation.id, shown: true), method: :post do %>
-                        <span class="glyphicon glyphicon-ok"></span>
-                      <% end %>
-                      <%= link_to check_donation_path(donation.id, shown: false), method: :post do %>
-                        <span class="glyphicon glyphicon-remove"></span>
-                      <% end %>
-                    </span>
-                  </h4>
-                </div>
+              <a class="list-group-item" data-toggle="modal" href="#donation-modal-<%= donation.id %>">
+                <h4 class="list-group-item-heading">
+                  <%= donation.date_to_human %> <%= donation.user_name %>
+                </h4>
               </a>
+            <% end %>
+            <% @donations.each do |donation| %>
+              <%= render partial: "donation_modal", locals: { donation: donation } %>
             <% end %>
           <% else %>
             <a class="list-group-item no-hover">Nema neobradjenih donacija</a>

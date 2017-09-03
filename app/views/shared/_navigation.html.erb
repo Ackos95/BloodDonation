@@ -54,7 +54,7 @@
               <li class="nav-item <%= 'current' if uri == :edit_profile %>">
                 <%= link_to "Izmena profila", profile_edit_path %>
               </li>
-                <% if @user.donor? %>
+                <% if current_user.donor? %>
                   <li class="nav-item">
                     <%= link_to "Generiši potvrdu", pdf_cert_path, target: "_blank" %>
                   </li>
