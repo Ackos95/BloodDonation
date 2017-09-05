@@ -1,8 +1,8 @@
 class Donation < ApplicationRecord
 
-  validate :new_validation_can_not_be_in_past
-  validate :new_validation_must_be_in_work_hours
-  validate :new_donation_must_be_in_free_schedule
+  validate :new_validation_can_not_be_in_past, on: :create
+  validate :new_validation_must_be_in_work_hours, on: :create
+  validate :new_donation_must_be_in_free_schedule, on: :create
 
   STATUS_FINISHED = 0.freeze
   STATUS_FAILED = 1.freeze
